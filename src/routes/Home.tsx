@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IUser from "../Interfaces/IUser";
 import Search from "../components/Search";
+import User from "../components/User";
 
 export default function Home() {
   const [user, setUser] = useState<IUser | null>(null);
@@ -24,15 +25,7 @@ export default function Home() {
   return (
     <div>
       <Search loadUser={loadUser} />
-      {user && (
-        <div>
-          <img src={user.avatar_url} alt={user.login} />
-          <p>Username: {user.login}</p>
-          <p>Location: {user.location}</p>
-          <p>Followers: {user.followers}</p>
-          <p>Following: {user.following}</p>
-        </div>
-      )}
+      {user && <User {...user} />}
     </div>
   );
 }
