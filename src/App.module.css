@@ -1,0 +1,9 @@
+.paginaPadrao {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.paginaPadrao h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
