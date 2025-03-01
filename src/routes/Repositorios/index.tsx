@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useRepositorios from "../state/hooks/useRepositorios";
-import useUser from "../state/hooks/useUser";
+import useRepositorios from "../../state/hooks/useRepositorios";
+import useUser from "../../state/hooks/useUser";
 
 export default function Repositorios() {
   const { buscaRepositorio, repositorios } = useRepositorios();
@@ -16,14 +16,16 @@ export default function Repositorios() {
   }, [hasFetched]);
   return (
     <div>
-      <h1>Repositorios</h1>
+      <h1>Repositorios Favoritos</h1>
       {repositorios &&
         repositorios
           .filter((rep) => rep.stargazers_count > 0)
+          .sort((a, b) => b.stargazers_count - a.stargazers_count)
+          .slice(0, 5)
           .map((rep) => (
             <div key={rep.id}>
               <p>{rep.name}</p>
-              <p>{rep.stargazers_count}</p>
+              <p>{rep.stargazers_count.toLocaleString("pt-BR")}</p>
             </div>
           ))}
     </div>

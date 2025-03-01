@@ -10,7 +10,7 @@ export default function useRepositorios() {
   const buscaRepositorio = async (linkRepositorio: string) => {
     try {
       if (user?.repos_url) {
-        const res = await axios.get(linkRepositorio);
+        const res = await axios.get(`${linkRepositorio}?per_page=100`);
         setRepositorios(res.data);
       }
     } catch (erro) {
